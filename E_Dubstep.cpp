@@ -11,26 +11,31 @@ using namespace std;
 
 void solve()
 {
+
   string s;
   cin >> s;
   string res = "";
+  bool isspace = false;
   for (int i = 0; i < s.size(); i++)
   {
     if (s.substr(i, 3) == "WUB")
     {
-      if (i != 0 && i + 3 != s.size() && res.size() >= 1)
+      if (res.size() > 0)
       {
-        res += ' ';
+        isspace = true;
       }
-
       i += 2;
     }
     else
     {
+      if (isspace)
+      {
+        res += ' ';
+        isspace = false;
+      }
       res += s[i];
     }
   }
-  // cout << res.size();
   cout << res;
 }
 
